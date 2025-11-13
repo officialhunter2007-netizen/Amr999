@@ -1,5 +1,5 @@
-# Here we will try to answer these three questions :
-![Screenshot](<Screenshot 2025-11-13 100507.png>)
+# Here we will try to answer these 4 questions :
+![Screenshot](<Images/Screenshot 2025-11-13 100507.png>)
 ## Question one:
 ### The Goal
 The objective is to find the password for the WinRM service on the target machine (`10.129.202.136`), log in, and find the flag.
@@ -18,7 +18,7 @@ The objective is to find the password for the WinRM service on the target machin
         ```sh
         netexec winrm 10.129.202.136 -u usernames.list -p passwords.list
         ```
-
+![Screenshot](<Images/Screenshot 2025-11-13 101734.png>)
 3.  **Identify the Cracked Credentials:**
     *   The `netexec` output showed many failed attempts but found one successful combination, indicated by `(Pwn3d!)`.
     *   **Cracked Credentials:** `john:november`
@@ -29,7 +29,7 @@ The objective is to find the password for the WinRM service on the target machin
         ```sh
         evil-winrm -i 10.129.202.136 -u john -p november
         ```
-
+![Screenshot](<Images/Screenshot 2025-11-13 103037.png>)
 5.  **Find and Read the Flag:**
     *   After successfully logging in, the user navigated to the Desktop (`cd Desktop`).
     *   They listed the files (`ls`) and found `flag.txt`.
@@ -40,3 +40,6 @@ The objective is to find the password for the WinRM service on the target machin
         ```
     *   **Flag:** `HTB{That5Novembr3r}`
 
+![Screenshot](<Images/Screenshot 2025-11-13 104253.png>)
+
+# ***********************************************
