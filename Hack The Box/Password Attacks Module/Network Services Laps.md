@@ -1,5 +1,5 @@
 # Here we will try to answer these three questions :
-
+![Screenshot](<Screenshot 2025-11-13 100507.png>)
 ## Question one:
 ### The Goal
 The objective is to find the password for the WinRM service on the target machine (`10.129.202.136`), log in, and find the flag.
