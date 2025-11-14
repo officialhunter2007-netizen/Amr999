@@ -9,25 +9,32 @@ A secondary objective is to answer specific evaluation questions by finding info
 
 1.  **Connect:** Logged into the Windows machine (`10.129.201.57`) via RDP.
 2.  **Create Folders:** Created `C:\Users\htb-student\Desktop\Company Data` and a subfolder `HR`.
+
+![Screenshot](<Images/Screenshot 2025-11-14 041516.png>)
+
 3.  **Create User & Group:**
     *   Created a new local user named `Jim`.
     *   Created a new local security group named `HR`.
     *   Added the `Jim` user to the `HR` group.
-4.  **Set Share Permissions:**
+
+       ![Screenshot](<Images/Screenshot 2025-11-14 045253.png>)
+
+5.  **Set Share Permissions:**
     *   Configured sharing on the `Company Data` folder.
     *   Removed the default `Everyone` group from the share permissions.
     *   Added the `HR` group with **Change** and **Read** permissions.
-5.  **Set NTFS Permissions:**
+      ![Screenshot](<Images/Screenshot 2025-11-14 044410.png>)
+6.  **Set NTFS Permissions:**
     *   On the `Company Data` folder's Security tab, disabled inheritance.
     *   Removed default inherited permissions.
     *   Gave the `HR` group **Modify**, **Read & Execute**, **List folder contents**, **Read**, and **Write** permissions.
-6.  **Audit Service:**
+7.  **Audit Service:**
     *   Used PowerShell to get detailed properties for the Windows Update service (`wuauserv`).
     *   **Command:**
         ```powershell
         Get-Service -Name wuauserv | Format-List *
         ```
-
+      ![Screenshot](<Images/Screenshot 2025-11-14 045643.png>)
 ---
 
 ## The Steps: Answering Evaluation Questions
