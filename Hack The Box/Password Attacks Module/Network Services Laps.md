@@ -1,7 +1,7 @@
-# Here we will try to answer these 2 questions :
+# Here we will do these 2 Projects :
 #### _Find the user for the WinRM service and crack their password. Then, when you log in, you will find the flag in a file there. Submit the flag you found as the answer._
 #### _Find the user for the SSH service and crack their password. Then, when you log in, you will find the flag in a file there. Submit the flag you found as the answer._
-## Question one:
+## Project one:
 ### The Goal
 The objective is to find the password for the WinRM service on the target machine (`10.129.202.136`), log in, and find the flag.
 
@@ -44,7 +44,7 @@ The objective is to find the password for the WinRM service on the target machin
 ![Screenshot](<Images/Screenshot 2025-11-13 104253.png>)
 
 # ***********************************************
-## Question two:
+## Project two:
 ### The Goal
 The objective is to find the password for the SSH service on the target machine (`10.129.210.41`), log in, and find the flag.
 
