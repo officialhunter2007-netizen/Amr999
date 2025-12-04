@@ -56,3 +56,24 @@ Next, I switched to a defensive role to detect my own actions.
 2.  **Log Analysis:** I then went to the Event Viewer and looked for **Event ID 4663** ("An attempt was made to access an object").
 3.  **Detection:** I successfully identified the attack by finding the specific event where the user `bob` accessed the `Groups.xml` file. This confirmed that the compromised user account was used to read the file containing the GPP credentials.
 ![s](<Screenshot 2025-12-02 180230.png>)
+
+# *****************************************************************
+## Exercise Three: Exposed Credentials in Network Share
+
+### Offensive Phase: Credential Discovery
+
+First, as an attacker, I simulated finding credentials exposed in a network share.
+
+1.  **Initial Access & Recon:** I started by RDP'ing into `WS001` as the user `bob`. From there, I ran `Invoke-ShareFinder` (from PowerView) to discover all accessible network shares in the domain. This revealed a non-standard share: `\\Server01.eagle.local\dev$`.
+![s](<Screenshot 2025-12-04 134353.png>)
+2.  **Exploitation:** I explored the `dev$` share and used `findstr` to search for PowerShell scripts containing the word "eagle". This led me to a script named `connect.ps1`.
+![s](<Screenshot 2025-12-04 134620.png>)
+3.  **Credential Extraction:** I examined the `connect.ps1` script and found it contained hardcoded credentials for the Administrator account (`administrator:Slavi123`) used in a `net use` command.
+
+### Defensive Phase: Detection and Analysis
+
+Next, I switched to a defensive role to detect this activity.
+
+1.  **Log Analysis:** I connected to the Domain Controller and opened the Event Viewer, focusing on the Security log for logon events.
+2.  **Detection:** I looked for successful logon events (**Event ID 4624**). I identified the attack by finding a logon event for the `Administrator` account that originated from an unusual **Source Network Address** (`172.16.18.20`, the Kali machine). An administrator logging in from a non-standard workstation is a *strong indicator* of credential compromise and lateral movement.
+![s](<Screenshot 2025-12-04 134729.png>)
