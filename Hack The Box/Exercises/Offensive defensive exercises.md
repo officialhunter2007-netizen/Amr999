@@ -77,3 +77,29 @@ Next, I switched to a defensive role to detect this activity.
 1.  **Log Analysis:** I connected to the Domain Controller and opened the Event Viewer, focusing on the Security log for logon events.
 2.  **Detection:** I looked for successful logon events (**Event ID 4624**). I identified the attack by finding a logon event for the `Administrator` account that originated from an unusual **Source Network Address** (`172.16.18.20`, the Kali machine). An administrator logging in from a non-standard workstation is a *strong indicator* of credential compromise and lateral movement.
 ![s](<Screenshot 2025-12-04 134729.png>)
+# *****************************************************************
+## Exercise four: AD Enumeration and Credential Discovery
+
+In this lab environment, I simulated an attack from the compromised Windows 10 machine `WS001`, where the user `Bob` was assumed to be already compromised. From there, I performed several offensive actions to understand how an attacker could enumerate and extract sensitive data inside an Active Directory domain containing multiple servers (`DC1`, `DC2`, `Server01`, `PKI`, etc.).
+
+After simulating the attack, I switched to the defensive perspective and analyzed the environment to detect the malicious activity.
+
+---
+
+### Offensive Phase
+
+-   Gained remote code execution on `WS001` (Windows 10) as user `Bob`.
+-   Used PowerShell to enumerate Active Directory users and searched for sensitive information.
+![s](<Screenshot 2025-12-05 053815.png>)
+-   Discovered cleartext credentials in user attributes (e.g., `Description` field containing `pass: Slavi1234`).
+-   Identified the domain controller and queried user properties using `Get-ADUser`.
+![s](<Screenshot 2025-12-05 054819.png>)
+
+### Defensive Phase
+
+-   Monitored Windows Security logs for suspicious activity.
+-   Detected **Event ID 4768** indicating a Kerberos TGT request from user `bonni`, originating from `WS001`.
+![s](<Screenshot 2025-12-05 062836.png>)
+
+-   Correlated the log data with the earlier enumeration to confirm unauthorized access.
+-   Validated the presence of exposed credentials and confirmed the compromise path.
