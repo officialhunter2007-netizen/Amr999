@@ -100,6 +100,21 @@ After simulating the attack, I switched to the defensive perspective and analyze
 -   Monitored Windows Security logs for suspicious activity.
 -   Detected **Event ID 4768** indicating a Kerberos TGT request from user `bonni`, originating from `WS001`.
 ![s](<Screenshot 2025-12-05 062836.png>)
+# *****************************************************************
+## Exercise Five: DCSync Attack Simulation
 
--   Correlated the log data with the earlier enumeration to confirm unauthorized access.
--   Validated the presence of exposed credentials and confirmed the compromise path.
+### Offensive Phase
+
+-   Gained remote code execution on `WS001` as `Bob`, a standard AD user.
+-   Used `runas` to escalate privileges and impersonate `rocky`, a domain user.
+-   Executed Mimikatz to perform a DCSync attack targeting the `Administrator` account in the `eagle.local` domain.
+![s](<Screenshot 2025-12-07 095819.png>)
+-   Successfully extracted the NTLM hash of the domain administrator from `DC1`.
+
+### Defensive Phase
+
+-   Investigated Windows Security Event Logs, focusing on **Event ID 4662**.
+-   Identified suspicious "Control Access" operations on `domainDNS` objects.
+-   Noted that the account `rocky` performed sensitive directory access, despite not being a Domain Controller.
+-   Correlated the event with the DCSync activity, confirming unauthorized replication behavior.
+![s](<Screenshot 2025-12-07 100346.png>)
