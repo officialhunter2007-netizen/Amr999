@@ -118,3 +118,29 @@ After simulating the attack, I switched to the defensive perspective and analyze
 -   Noted that the account `rocky` performed sensitive directory access, despite not being a Domain Controller.
 -   Correlated the event with the DCSync activity, confirming unauthorized replication behavior.
 ![s](<Screenshot 2025-12-07 100346.png>)
+# *****************************************************************
+## Exercise Six: Golden Ticket Attack Simulation
+
+### Offensive Simulation
+
+-   Gained remote code execution on `WS001` as `Bob`, a regular AD user, using `xfreerdp` for remote access.
+![s](<Screenshot 2025-12-07 180426.png>)
+-   Escalated privileges using `runas` to impersonate the user `rocky`.
+-   Loaded `PowerView.ps1` and retrieved the domain SID.
+![s](<Screenshot 2025-12-08 100227.png>)
+-   Executed Mimikatz to perform DCSync attacks on the `krbtgt`account.
+-   Extracted NTLM hashes and domain replication data.
+![s](<Screenshot 2025-12-08 100156.png>)
+-   Forged a Golden Ticket using the `krbtgt` hash and the domain SID.
+![s](<Screenshot 2025-12-08 100330.png>)
+-   Verified ticket injection with `klist` and accessed domain resources.
+![s](<Screenshot 2025-12-08 100441.png>)
+### Detection and Analysis
+
+-   Detected **Event ID 4624** indicating a suspicious logon with an elevated token, a sign of potential privilege escalation.
+![s](<Screenshot 2025-12-08 100615.png>)
+-   Correlated with **Event ID 4769** showing Kerberos service ticket requests from `Administrator@eagle.local`, indicating lateral movement attempts.
+  
+![s](<Screenshot 2025-12-08 100636.png>)
+-   Identified forged ticket behavior by analyzing abnormal client addresses and service names in Kerberos logs.
+-   Confirmed Golden Ticket activity by matching timestamps and encryption types across related security events.
