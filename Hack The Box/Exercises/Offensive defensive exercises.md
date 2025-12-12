@@ -144,3 +144,28 @@ After simulating the attack, I switched to the defensive perspective and analyze
 ![s](<Screenshot 2025-12-08 100636.png>)
 -   Identified forged ticket behavior by analyzing abnormal client addresses and service names in Kerberos logs.
 -   Confirmed Golden Ticket activity by matching timestamps and encryption types across related security events.
+
+# *****************************************************************
+
+## Exercise Seven: Print Spooler Attack & Detection Summary
+
+In this lab, I simulated a full attack-and-detect cycle, playing the role of both an attacker and a defender.
+
+---
+
+### Offensive Phase: Abusing the Print Spooler
+
+My goal was to compromise the domain by abusing the Print Spooler service.
+
+-   **Setup:** From my Kali machine (`172.16.18.20`), I started `ntlmrelayx` to listen for connections and relay them to `DC2` (`172.16.18.4`) with the goal of performing a `DCSync` attack.
+![s](<Screenshot 2025-12-12 100111.png>)
+-   **Execution:** I then used the `dementor.py` script to trigger the "PrinterBug" vulnerability. This forced `DC1` (`172.16.18.3`) to authenticate to my Kali machine.
+-   **Result:** My `ntlmrelayx` tool successfully intercepted `DC1`'s powerful machine account credentials, relayed them to `DC2`, and dumped domain password hashes, achieving a full domain compromise.
+![s](<Screenshot 2025-12-12 100624.png>)
+### Defensive Phase: Detecting the Relay
+
+I then switched roles to see if I could detect my own attack.
+
+-   **Detection:** I quickly found a successful logon event (**Event ID 4624**) for the `DC1$` machine account.
+-   **Confirmation:** The key piece of evidence was the **Source Network Address**. The logon came from my Kali machine's IP (`172.16.18.20`), not `DC1`'s actual IP. This mismatch was the definitive proof of the NTLM relay attack.
+![s](<Screenshot 2025-12-12 112627.png>)
