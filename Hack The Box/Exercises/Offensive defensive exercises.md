@@ -169,3 +169,28 @@ I then switched roles to see if I could detect my own attack.
 -   **Detection:** I quickly found a successful logon event (**Event ID 4624**) for the `DC1$` machine account.
 -   **Confirmation:** The key piece of evidence was the **Source Network Address**. The logon came from my Kali machine's IP (`172.16.18.20`), not `DC1`'s actual IP. This mismatch was the definitive proof of the NTLM relay attack.
 ![s](<Screenshot 2025-12-12 112627.png>)
+# *****************************************************************
+## Exercise eight: ACL Attack & Defense
+
+In this lab, I simulated a full attack-and-detect cycle focused on Active Directory Access Control Lists (ACLs).
+
+---
+
+### Offensive Phase: ACL Exploitation
+
+My goal was to escalate from a regular user, `Bob`, to a privileged one.
+
+-   **Reconnaissance:** I ran `SharpHound.exe` to collect all permission data from the domain.
+![s](<Screenshot 2025-12-14 140225.png>)
+-   **Analysis:** I loaded this data into BloodHound, which instantly showed me that my user, `Bob`, had been given `GenericAll` (full control) over another user, `Anni`, and a computer, `Server01`.
+![s](<Screenshot 2025-12-14 140301.png>)
+-   **Exploitation:** This gave me a clear path to compromise the domain. I could either reset `Anni`'s password to take over her account or abuse my control over `Server01` to gain administrative access.
+
+### Defensive Phase: Detection via Honeypot
+
+I then switched roles to detect my own attack.
+
+-   **Detection:** I analyzed the domain controller's logs and found that when I modified the `Anni` user object, it generated **Event ID 4738** ("A user account was changed"). While this event doesn't show *what* changed, it does show *who* changed it (`Bob`).
+![s](<Screenshot 2025-12-14 140409.png>)
+-   **Honeypot Strategy:** This led to my defensive strategy: create a "honeypot" user account and intentionally give broad modification permissions to it. Then, set up a high-priority alert to trigger anytime an **Event ID 4738** is logged for this specific honeypot account.
+-   **Outcome:** Since no legitimate user should ever modify this trap account, any alert is a reliable sign of an attacker. This allows me to instantly detect the malicious activity and disable the source account (`Bob`) to stop the attack.
