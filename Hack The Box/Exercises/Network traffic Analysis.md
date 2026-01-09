@@ -34,7 +34,7 @@ Demonstrate my ability to detect and validate an ARP Spoofing (MITM) attack usin
 -   Rapid identification of malicious behavior at Layer 2.
 -   Incident confirmation using multiple indicators.
 # ********************************************************
-# ARP Scan Detection Using Wireshark
+##Project 2 : ARP Scan Detection Using Wireshark
 
 ### What I Observed
 
