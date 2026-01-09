@@ -1,4 +1,4 @@
-## Project: ARP Spoofing Detection Using Wireshark
+## Project 1: ARP Spoofing Detection Using Wireshark
 
 ### Objective
 
@@ -11,7 +11,7 @@ Demonstrate my ability to detect and validate an ARP Spoofing (MITM) attack usin
 -   Applied ARP-focused filters to isolate Layer 2 traffic.
 -   Identified duplicate IP-to-MAC mappings for the same internal IP address.
 -   Confirmed spoofing through unsolicited ARP replies and Wireshark’s "Duplicate IP Address" warning.
-![s](<>)
+![s](<Screenshot 2026-01-08 080535.png>)
 ### Key Indicators Observed
 
 -   Same IP address advertised by multiple MAC addresses.
