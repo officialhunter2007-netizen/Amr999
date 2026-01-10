@@ -76,3 +76,30 @@ This type of scan is commonly performed before:
 -   ARP Spoofing
 -   MITM attacks
 -   Lateral movement
+# ********************************************************
+## Project 3: Detecting a Wi-Fi Deauthentication Attack (Layer 2)
+
+### Overview
+
+In this analysis, I investigated a wireless packet capture to identify a Layer 2 Wi-Fi deauthentication attack using Wireshark.
+
+---
+
+### Detection Process
+
+I began by filtering 802.11 management frames related to a specific BSSID and narrowed the traffic to **Deauthentication frames**. This allowed me to focus only on activity relevant to Layer 2 wireless control traffic.
+
+![s](<Screenshot 2026-01-10 184241.png>)
+
+### Indicators of Attack
+
+-   A high volume of deauthentication frames within a very short time window, which is abnormal in normal Wi-Fi operations.
+-   Frames sent in both directions (AP → client and spoofed client → AP).
+-   Repeated **Reason Code 7** ("Class 3 frame received from non-associated STA"), suggesting frame injection by a device not legitimately connected.
+-   Rapid sequence number increments, consistent with automated attack tools rather than normal access point behavior.
+
+### Conclusion
+
+Based on the excessive deauthentication frames, abnormal reason codes, and sequence patterns, I concluded that this activity represents a **Layer 2 Wi-Fi deauthentication (DoS) attack** aimed at forcibly disconnecting clients.
+
+> This analysis demonstrates my ability to detect wireless attacks at Layer 2, analyze 802.11 protocol behavior, and communicate findings clearly from a SOC analyst perspective.
