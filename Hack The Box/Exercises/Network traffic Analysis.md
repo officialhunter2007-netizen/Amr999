@@ -103,3 +103,38 @@ I began by filtering 802.11 management frames related to a specific BSSID and na
 Based on the excessive deauthentication frames, abnormal reason codes, and sequence patterns, I concluded that this activity represents a **Layer 2 Wi-Fi deauthentication (DoS) attack** aimed at forcibly disconnecting clients.
 
 > This analysis demonstrates my ability to detect wireless attacks at Layer 2, analyze 802.11 protocol behavior, and communicate findings clearly from a SOC analyst perspective.
+
+# ********************************************************
+## Project 4: Detection of TCP Port Scan via Packet Analysis
+
+### Objective
+
+Identify and confirm malicious reconnaissance activity (TCP port scanning) within network traffic using packet-level analysis.
+
+---
+
+### Tools & Technologies
+
+-   **Wireshark:** Packet capture and deep traffic inspection.
+-   **PCAP Analysis:** Offline forensic investigation.
+-   **TCP/IP Protocol Analysis**
+-   **Display Filters:** Specifically, `tcp.flags.reset == 1`.
+![s](<Screenshot 2026-01-12 073417.png>)
+### Detection Steps
+
+1.  Loaded the PCAP file (`nmap_frag_fw_bypass.pcapng`) into Wireshark for analysis.
+2.  Applied a targeted display filter to isolate TCP Reset (RST) packets, which are commonly generated in response to unsolicited connection attempts:
+    `tcp.flags.reset == 1`
+3.  Observed a high volume of `RST/ACK` responses originating from the same source IP and targeting multiple destination ports in rapid succession.
+4.  Correlated source and destination behavior:
+    -   One internal host attempted connections to many different TCP ports.
+    -   The target host responded with consistent `RST, ACK` flags.
+    -   The traffic pattern matched known Nmap TCP scan behavior.
+5.  Validated attack characteristics:
+    -   Sequential and non-sequential port targeting.
+    -   Short time intervals between packets.
+    -   No successful TCP three-way handshake completion.
+
+### Analysis & Conclusion
+
+> Based on the traffic pattern, TCP flags, and port distribution, I confidently identified this activity as a **TCP port scan reconnaissance attack**. The behavior is consistent with Nmap-based scanning techniques, often used as a precursor to exploitation.
