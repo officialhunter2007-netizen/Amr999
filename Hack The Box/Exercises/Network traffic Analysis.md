@@ -138,3 +138,57 @@ Identify and confirm malicious reconnaissance activity (TCP port scanning) withi
 ### Analysis & Conclusion
 
 > Based on the traffic pattern, TCP flags, and port distribution, I confidently identified this activity as a **TCP port scan reconnaissance attack**. The behavior is consistent with Nmap-based scanning techniques, often used as a precursor to exploitation.
+# ********************************************************
+
+## Project 5: ICMP Smurf Attack Detection – PCAP Analysis (Wireshark)
+
+### Attack Type Identified
+
+ICMP Smurf Denial-of-Service Attack
+
+### Objective
+
+Analyze captured network traffic to identify abnormal ICMP behavior indicative of a denial-of-service attack and demonstrate practical SOC analyst detection and traffic-analysis skills using Wireshark.
+
+---
+
+### Step-by-Step Detection Process (My Methodology)
+
+![s](<Screenshot 2026-01-12 185914.png>)
+
+1.  **Initial Traffic Scoping**
+    I began by applying an `icmp` display filter to isolate ping-related traffic. This immediately revealed an abnormally high volume of ICMP Echo (ping) requests within a very short time frame.
+
+2.  **Identification of Abnormal ICMP Patterns**
+    While reviewing the packet list, I observed:
+    -   A single source host (`192.168.10.5`).
+    -   Repeatedly sending ICMP Echo Requests.
+    -   Targeting the same destination host (`192.168.10.1`).
+    -   Rapid sequence number increments with minimal time delta between packets.
+    > This behavior significantly deviates from normal ICMP usage, which is typically sparse and diagnostic in nature.
+
+3.  **Payload and Packet Size Analysis**
+    Upon inspecting individual packets, I identified:
+    -   Extremely large ICMP payloads (~25,000 bytes).
+    -   Continuous transmission without pauses.
+    -   Reassembled IPv4 payloads indicating fragmentation handling.
+    > This confirms an attempt to consume bandwidth and processing resources, a classic DoS indicator.
+
+4.  **Request–Reply Imbalance Observation**
+    I also noticed:
+    -   Numerous ICMP Echo Requests.
+    -   Missing or delayed Echo Replies.
+    -   "No response found" indicators in Wireshark.
+    > This imbalance suggests that the destination host was being overwhelmed and could not respond to all incoming requests.
+
+### Attack Classification Reasoning
+
+Based on the analysis, I classified this traffic as an **ICMP Smurf-style attack** due to:
+
+-   High-volume ICMP Echo Requests.
+-   Repetitive and automated packet structure.
+-   Large payload sizes.
+-   Resource exhaustion characteristics.
+-   Intent to deny service rather than perform reconnaissance.
+
+> While classic Smurf attacks rely on broadcast amplification, this capture demonstrates the core Smurf DoS behavior: abusing ICMP to overwhelm a target.
