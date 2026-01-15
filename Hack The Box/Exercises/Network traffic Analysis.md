@@ -192,3 +192,27 @@ Based on the analysis, I classified this traffic as an **ICMP Smurf-style attack
 -   Intent to deny service rather than perform reconnaissance.
 
 > While classic Smurf attacks rely on broadcast amplification, this capture demonstrates the core Smurf DoS behavior: abusing ICMP to overwhelm a target.
+
+# ***************************************
+
+# Project 6: HTTP Directory Enumeration Attack Analysis
+
+In this project, I analyzed a PCAP file in Wireshark to investigate suspicious web traffic. I successfully identified and documented an HTTP directory and file enumeration attack, a common reconnaissance technique used by attackers to map a web application's attack surface.
+
+---
+![s](<![s](<Screenshot 2026-01-15 075251.png>)>)
+
+---
+### Key Findings & Actions
+
+-   **Detection:** Identified a high volume of sequential HTTP `GET` requests for sensitive files (e.g., `/.bash_history`, `/git/HEAD`) from a single source IP (`192.168.10.5`).
+-   **Analysis:** Correlated the requests with the server's **HTTP 401 Unauthorized** responses, confirming the attacker was actively probing for existing but protected resources.
+-   **Classification:** The activity was classified as a **Directory & File Enumeration Attack (MITRE ATT&CK T1595)**, consistent with tools like Gobuster or DirBuster.
+
+### SOC Skills Demonstrated
+
+-   **Traffic Analysis:** Filtered and analyzed HTTP traffic to isolate malicious patterns.
+-   **Threat Identification:** Recognized the attack signature of automated reconnaissance tools.
+-   **Incident Documentation:** Correlated packet-level evidence to classify the threat and assess its potential impact.
+
+> This analysis showcases my ability to dissect network traffic, identify attacker TTPs, and translate findings into actionable security intelligence.
