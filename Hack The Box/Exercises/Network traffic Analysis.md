@@ -200,7 +200,7 @@ Based on the analysis, I classified this traffic as an **ICMP Smurf-style attack
 In this project, I analyzed a PCAP file in Wireshark to investigate suspicious web traffic. I successfully identified and documented an HTTP directory and file enumeration attack, a common reconnaissance technique used by attackers to map a web application's attack surface.
 
 ---
-![s](<![s](<Screenshot 2026-01-15 075251.png>)>)
+![s](<Screenshot 2026-01-15 075251.png>)
 
 ---
 ### Key Findings & Actions
@@ -216,3 +216,62 @@ In this project, I analyzed a PCAP file in Wireshark to investigate suspicious w
 -   **Incident Documentation:** Correlated packet-level evidence to classify the threat and assess its potential impact.
 
 > This analysis showcases my ability to dissect network traffic, identify attacker TTPs, and translate findings into actionable security intelligence.
+
+# ***************************************
+
+# Project 7: TLS Renegotiation DoS Attack Analysis
+
+In this project, I analyzed a PCAP file in Wireshark and identified an application-layer Denial of Service (DoS) attack. The attacker utilized a TLS Renegotiation technique to exhaust the server's CPU resources.
+
+---
+
+![s](<Screenshot 2026-01-17 110148.png>)
+
+
+### Key Findings
+
+-   **Attack Signature:** I detected a high-volume flood of `Client Hello` messages sent from the attacker (`192.168.10.56`) to the victim (`192.168.10.23`) after an initial TLS session was already established.
+-   **Malicious Intent:** This pattern is characteristic of a **TLS Renegotiation Attack**, where each `Client Hello` forces the server to perform expensive cryptographic calculations, leading to CPU exhaustion.
+-   **Evidence:** The server responded with `Encrypted Alert` messages, indicating it was overwhelmed and terminating sessions under the strain of the attack.
+
+### Threat Classification
+
+-   **Attack:** Application Layer Denial of Service (DoS)
+-   **Technique:** TLS Renegotiation Flood (MITRE ATT&CK T1499.002)
+
+### SOC Skills Demonstrated
+
+-   **Protocol Analysis:** Dissected TLS handshake traffic to identify anomalous behavior.
+-   **Pattern Recognition:** Identified the specific signature of a resource exhaustion attack.
+-   **Incident Triage:** Quickly classified the threat and determined its intent and impact.
+
+> This analysis showcases my ability to detect stealthy, low-bandwidth DoS attacks by understanding the intricacies of network protocols.
+# ***************************************
+
+# Project: DNS Tunneling Data Exfiltration Analysis
+
+In this project, I analyzed a PCAP file in Wireshark and uncovered a DNS Tunneling attack. This technique allows attackers to bypass firewalls and exfiltrate data by hiding it within DNS traffic.
+
+---
+
+![s](<Screenshot 2026-01-18 091309.png>)
+
+
+### Key Findings
+
+-   **Anomaly Detected:** I identified a high volume of suspicious DNS queries for `TXT` records originating from a single host (`192.168.10.5`). This is not typical user behavior.
+-   **"Smoking Gun" Evidence:** By inspecting the DNS responses, I discovered a `TXT` record containing an embedded string: `HTB{This is kind of malicious ;)}`.
+-   **Conclusion:** This proves that the DNS protocol was being abused as a covert channel for data exfiltration or command-and-control (C2), rather than for legitimate name resolution.
+
+### Threat Classification
+
+-   **Attack:** Covert Data Exfiltration / C2
+-   **Technique:** DNS Tunneling (MITRE ATT&CK T1071.004)
+
+### SOC Skills Demonstrated
+
+-   **Anomaly Detection:** Identified non-standard use of the DNS protocol.
+-   **Packet Analysis:** Extracted and interpreted malicious payloads from DNS records.
+-   **Threat Hunting:** Proactively investigated suspicious patterns to uncover a hidden threat.
+
+> This analysis demonstrates my ability to detect advanced threats that abuse trusted protocols to evade traditional security controls.
