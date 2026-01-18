@@ -1,4 +1,4 @@
-## Project 1: ARP Spoofing Detection Using Wireshark
+# Project 1: ARP Spoofing Detection Using Wireshark
 
 ### Objective
 
@@ -34,7 +34,7 @@ Demonstrate my ability to detect and validate an ARP Spoofing (MITM) attack usin
 -   Rapid identification of malicious behavior at Layer 2.
 -   Incident confirmation using multiple indicators.
 # ********************************************************
-## Project 2 : ARP Scan Detection Using Wireshark
+# Project 2 : ARP Scan Detection Using Wireshark
 
 ### What I Observed
 
@@ -77,7 +77,7 @@ This type of scan is commonly performed before:
 -   MITM attacks
 -   Lateral movement
 # ********************************************************
-## Project 3: Detecting a Wi-Fi Deauthentication Attack (Layer 2)
+# Project 3: Detecting a Wi-Fi Deauthentication Attack (Layer 2)
 
 ### Overview
 
@@ -140,7 +140,7 @@ Identify and confirm malicious reconnaissance activity (TCP port scanning) withi
 > Based on the traffic pattern, TCP flags, and port distribution, I confidently identified this activity as a **TCP port scan reconnaissance attack**. The behavior is consistent with Nmap-based scanning techniques, often used as a precursor to exploitation.
 # ********************************************************
 
-## Project 5: ICMP Smurf Attack Detection – PCAP Analysis (Wireshark)
+# Project 5: ICMP Smurf Attack Detection – PCAP Analysis (Wireshark)
 
 ### Attack Type Identified
 
