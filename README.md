@@ -1,77 +1,79 @@
-# 🛡️ Amr999: My Hack The Box Portfolio 💻
+# 🛡️ Advanced Cybersecurity Portfolio: Threat Detection & Systems Security 💻
 
-Welcome to my personal portfolio showcasing my journey and achievements on Hack The Box (HTB). This repository serves as a comprehensive collection of my writeups, notes, and solutions for various HTB modules and exercises, demonstrating my practical skills and understanding in cybersecurity.
+[![Hack The Box](https://img.shields.io/badge/Hack%20The%20Box-Success-green?style=for-the-badge&logo=hackthebox)](https://www.hackthebox.com/)
+[![Wireshark](https://img.shields.io/badge/Wireshark-Traffic%20Analysis-blue?style=for-the-badge&logo=wireshark)](https://www.wireshark.org/)
+[![Windows Security](https://img.shields.io/badge/Windows-Security%20Hardening-0078D6?style=for-the-badge&logo=windows)](https://www.microsoft.com/en-us/security)
 
-## 📚 Table of Contents
+Welcome to my professional cybersecurity portfolio. This repository documents a series of high-fidelity technical projects focused on **Network Traffic Analysis**, **Threat Hunting**, and **Enterprise Systems Hardening**. Unlike standard documentation, this portfolio provides deep-dive forensic evidence and actionable security intelligence derived from real-world attack simulations.
 
-- [About This Repository](#about-this-repository)
-- [Hack The Box Modules & Exercises](#hack-the-box-modules--exercises)
-  - [General Exercises](#general-exercises)
-  - [Password Attacks Module](#password-attacks-module)
-  - [Windows Fundamentals Module](#windows-fundamentals-module)
-- [Skills Demonstrated](#skills-demonstrated)
-- [Repository Structure](#repository-structure)
-- [Connect with Me](#connect-with-me)
+---
 
-## ✨ About This Repository
+## 🌟 What Differentiates Me?
 
-This portfolio is a testament to my continuous learning and hands-on experience in the cybersecurity domain. It encapsulates my efforts in tackling real-world security challenges presented by Hack The Box, a leading online cybersecurity training platform. Each section provides insights into my problem-solving approach, technical methodologies, and the knowledge gained from each challenge.
+In a landscape of automated tools, I focus on the **"Why"** and **"How"** of an attack. My approach is characterized by:
 
-## 🚀 Hack The Box Modules & Exercises
+*   **Packet-Level Precision**: I don't just see alerts; I dissect the raw TCP/IP, 802.11, and DNS protocols to uncover stealthy indicators of compromise (IoCs).
+*   **SOC-Ready Methodology**: Every analysis follows a structured forensic process—from initial scoping and pattern recognition to final threat classification and mitigation strategy.
+*   **Hybrid Expertise**: I bridge the gap between **Offensive Reconnaissance** (understanding attacker TTPs) and **Defensive Hardening** (implementing least-privilege NTFS/Share permissions and service auditing).
+*   **Visual Evidence**: Every claim is backed by forensic screenshots and PCAP analysis, ensuring transparency and technical validation.
 
-Here's a breakdown of the modules and exercises documented within this repository:
+---
 
-### General Exercises
+## 🛠️ Core Technical Skill Set
 
-This section contains various exercises covering a range of cybersecurity topics.
+| Category | Skills & Tools |
+| :--- | :--- |
+| **Network Forensics** | Wireshark, PCAP Analysis, Protocol Dissection (TCP, ICMP, DNS, TLS, 802.11) |
+| **Threat Detection** | ARP Spoofing, MITM, DNS Tunneling, TLS Renegotiation DoS, HTTP Directory Enumeration |
+| **Systems Security** | Windows Security Hardening, NTFS & Share Permissions, PowerShell Auditing, User/Group Management |
+| **Reconnaissance** | Nmap Traffic Analysis, ARP Scanning Detection, Wireless Deauthentication Analysis |
 
-- [Network Traffic Analysis](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md)
-- [Offensive Defensive Exercises](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md)
+---
 
-### Password Attacks Module
+## 🔬 Featured Projects & Visual Evidence
 
-Dedicated to understanding and mitigating password-related vulnerabilities.
+### 1. Network Intrusion & Protocol Abuse Detection
+I specialize in identifying advanced threats that bypass traditional firewalls by abusing trusted protocols.
 
-- [Network Services Laps](Hack%20The%20Box/Password%20Attacks%20Module/Network%20Services%20Laps.md)
+*   **DNS Tunneling Exfiltration**: Detected covert C2 channels by identifying anomalous `TXT` record queries and extracting embedded malicious payloads.
+    > *“Smoking Gun” Evidence: Extracted `HTB{This is kind of malicious ;)}` from raw DNS traffic.*
+    ![DNS Tunneling](Hack%20The%20Box/Exercises/Screenshot%202026-01-18%20091309.png)
 
-### Windows Fundamentals Module
+*   **TLS Renegotiation DoS**: Identified application-layer resource exhaustion attacks by analyzing `Client Hello` flood patterns and server `Encrypted Alert` responses.
+    ![TLS DoS](Hack%20The%20Box/Exercises/Screenshot%202026-01-17%20110148.png)
 
-Focuses on the foundational aspects of Windows security and exploitation.
+*   **ARP Spoofing (MITM)**: Validated Layer 2 attacks using duplicate IP-to-MAC mapping analysis and unsolicited ARP reply detection.
+    ![ARP Spoofing](Hack%20The%20Box/Exercises/Screenshot%202026-01-08%20080535.png)
 
-- [Module Summary](Hack%20The%20Box/Windows%20Fundamentals%20Module/Module%20Summary.md)
-- [Windows Fundamentals Lab](Hack%20The%20Box/Windows%20Fundamentals%20Module/windows%20fundamentals%20Lap.md)
+### 2. Enterprise Systems Hardening (Windows)
+Beyond detection, I implement robust security controls to prevent unauthorized access and lateral movement.
 
-## 💡 Skills Demonstrated
+*   **Secure File Share Configuration**: Implemented a strict least-privilege model for sensitive HR data, configuring complex NTFS and Share permission inheritance.
+*   **Service Auditing via PowerShell**: Used advanced CLI queries to audit critical system services (e.g., `wuauserv`) and validate security configurations.
+    ![Windows Hardening](Hack%20The%20Box/Windows%20Fundamentals%20Module/Images/Screenshot%202025-11-14%20045253.png)
 
-Through the challenges documented here, I have honed and demonstrated skills in:
+---
 
-- **Network Traffic Analysis**: Identifying anomalies and extracting critical information from network captures.
-- **Password Cracking & Attacks**: Understanding various password attack vectors and defense mechanisms.
-- **Windows System Exploitation**: Gaining insights into Windows operating system vulnerabilities and securing them.
-- **Problem Solving**: Applying logical and analytical thinking to complex security scenarios.
-- **Documentation**: Clearly articulating technical processes and findings.
+## 📂 Repository Architecture
 
-## 📂 Repository Structure
-
-The repository is organized intuitively to allow easy navigation through the different modules and exercises:
-
-```
+```bash
 Amr999/
 ├── Hack The Box/
-│   ├── Exercises/
-│   │   ├── Network traffic Analysis.md
-│   │   └── Offensive defensive exercises.md
-│   ├── Password Attacks Module/
-│   │   ├── Images/ # Supporting images for the module
-│   │   └── Network Services Laps.md
-│   └── Windows Fundamentals Module/
-│       ├── Images/ # Supporting images for the module
+│   ├── Exercises/                      # Deep-dive PCAP Analysis & Threat Hunting
+│   │   ├── Network traffic Analysis.md  # ARP, TCP, ICMP, Wi-Fi Attack Detection
+│   │   └── ... (Forensic Screenshots)
+│   ├── Password Attacks Module/        # Credential Security & Lab Writeups
+│   └── Windows Fundamentals Module/    # Systems Hardening & Security Auditing
 │       ├── Module Summary.md
 │       └── windows fundamentals Lap.md
-├── README.md
-└── ... (other files like sam.save, security.save, system.save)
+└── README.md                           # Professional Portfolio Overview
 ```
 
-## 🤝 Connect with Me
+---
 
-I'm always open to connecting with fellow cybersecurity enthusiasts and professionals. Feel free to reach out or connect with me on GitHub!
+## 🤝 Let's Secure the Future
+
+I am actively seeking opportunities to apply my analytical skills in a **SOC Analyst** or **Security Researcher** capacity. If you value technical depth, forensic precision, and a proactive security mindset, let's connect.
+
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/officialhunter2007-netizen)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/)
