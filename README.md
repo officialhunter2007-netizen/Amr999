@@ -35,21 +35,35 @@ In a landscape of automated tools, I focus on the **"Why"** and **"How"** of an 
 ### 1. Network Intrusion & Protocol Abuse Detection
 I specialize in identifying advanced threats that bypass traditional firewalls by abusing trusted protocols.
 
-*   **DNS Tunneling Exfiltration**: Detected covert C2 channels by identifying anomalous `TXT` record queries and extracting embedded malicious payloads.
+*   **[DNS Tunneling Data Exfiltration Analysis](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-dns-tunneling-data-exfiltration-analysis)**: Detected covert C2 channels by identifying anomalous `TXT` record queries and extracting embedded malicious payloads.
     > *“Smoking Gun” Evidence: Extracted `HTB{This is kind of malicious ;)}` from raw DNS traffic.*
     ![DNS Tunneling](Hack%20The%20Box/Exercises/Screenshot%202026-01-18%20091309.png)
 
-*   **TLS Renegotiation DoS**: Identified application-layer resource exhaustion attacks by analyzing `Client Hello` flood patterns and server `Encrypted Alert` responses.
+*   **[TLS Renegotiation DoS Attack Analysis](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-7-tls-renegotiation-dos-attack-analysis)**: Identified application-layer resource exhaustion attacks by analyzing `Client Hello` flood patterns and server `Encrypted Alert` responses.
     ![TLS DoS](Hack%20The%20Box/Exercises/Screenshot%202026-01-17%20110148.png)
 
-*   **ARP Spoofing (MITM)**: Validated Layer 2 attacks using duplicate IP-to-MAC mapping analysis and unsolicited ARP reply detection.
+*   **[ARP Spoofing Detection Using Wireshark](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-1-arp-spoofing-detection-using-wireshark)**: Validated Layer 2 attacks using duplicate IP-to-MAC mapping analysis and unsolicited ARP reply detection.
     ![ARP Spoofing](Hack%20The%20Box/Exercises/Screenshot%202026-01-08%20080535.png)
+
+*   **[ARP Scan Detection Using Wireshark](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-2-arp-scan-detection-using-wireshark)**: Identified network reconnaissance activity through sequential IP enumeration and analysis of ARP requests.
+    ![ARP Scan](Hack%20The%20Box/Exercises/Screenshot%202026-01-09%20113622.png)
+
+*   **[Detecting a Wi-Fi Deauthentication Attack (Layer 2)](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-3-detecting-a-wi-fi-deauthentication-attack-layer-2)**: Analyzed wireless packet captures to identify Layer 2 Wi-Fi deauthentication attacks.
+    ![Wi-Fi Deauth](Hack%20The%20Box/Exercises/Screenshot%202026-01-10%20184241.png)
+
+*   **[Detection of TCP Port Scan via Packet Analysis](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-4-detection-of-tcp-port-scan-via-packet-analysis)**: Identified and confirmed malicious reconnaissance activity (TCP port scanning) using packet-level analysis.
+    ![TCP Port Scan](Hack%20The%20Box/Exercises/Screenshot%202026-01-12%20073417.png)
+
+*   **[ICMP Smurf Attack Detection – PCAP Analysis (Wireshark)](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-5-icmp-smurf-attack-detection--pcap-analysis-wireshark)**: Identified abnormal ICMP behavior indicative of a denial-of-service attack.
+    ![ICMP Smurf](Hack%20The%20Box/Exercises/Screenshot%202026-01-12%20185914.png)
+
+*   **[HTTP Directory Enumeration Attack Analysis](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-6-http-directory-enumeration-attack-analysis)**: Investigated suspicious web traffic to identify HTTP directory and file enumeration attacks.
+    ![HTTP Enum](Hack%20The%20Box/Exercises/Screenshot%202026-01-15%20075251.png)
 
 ### 2. Enterprise Systems Hardening (Windows)
 Beyond detection, I implement robust security controls to prevent unauthorized access and lateral movement.
 
-*   **Secure File Share Configuration**: Implemented a strict least-privilege model for sensitive HR data, configuring complex NTFS and Share permission inheritance.
-*   **Service Auditing via PowerShell**: Used advanced CLI queries to audit critical system services (e.g., `wuauserv`) and validate security configurations.
+*   **[Windows Fundamentals Lab](Hack%20The%20Box/Windows%20Fundamentals%20Module/windows%20fundamentals%20Lap.md)**: Implemented a strict least-privilege model for sensitive HR data, configuring complex NTFS and Share permission inheritance.
     ![Windows Hardening](Hack%20The%20Box/Windows%20Fundamentals%20Module/Images/Screenshot%202025-11-14%20045253.png)
 
 ---
@@ -60,12 +74,14 @@ Beyond detection, I implement robust security controls to prevent unauthorized a
 Amr999/
 ├── Hack The Box/
 │   ├── Exercises/                      # Deep-dive PCAP Analysis & Threat Hunting
-│   │   ├── Network traffic Analysis.md  # ARP, TCP, ICMP, Wi-Fi Attack Detection
+│   │   ├── [Network traffic Analysis.md](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md)
+│   │   ├── [Offensive defensive exercises.md](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md)
 │   │   └── ... (Forensic Screenshots)
 │   ├── Password Attacks Module/        # Credential Security & Lab Writeups
+│   │   └── [Network Services Laps.md](Hack%20The%20Box/Password%20Attacks%20Module/Network%20Services%20Laps.md)
 │   └── Windows Fundamentals Module/    # Systems Hardening & Security Auditing
-│       ├── Module Summary.md
-│       └── windows fundamentals Lap.md
+│       ├── [Module Summary.md](Hack%20The%20Box/Windows%20Fundamentals%20Module/Module%20Summary.md)
+│       └── [windows fundamentals Lap.md](Hack%20The%20Box/Windows%20Fundamentals%20Module/windows%20fundamentals%20Lap.md)
 └── README.md                           # Professional Portfolio Overview
 ```
 
