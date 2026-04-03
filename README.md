@@ -4,7 +4,7 @@
 [![Wireshark](https://img.shields.io/badge/Wireshark-Traffic%20Analysis-blue?style=for-the-badge&logo=wireshark)](https://www.wireshark.org/)
 [![Windows Security](https://img.shields.io/badge/Windows-Security%20Hardening-0078D6?style=for-the-badge&logo=windows)](https://www.microsoft.com/en-us/security)
 
-Welcome to my professional cybersecurity portfolio. This repository documents a series of high-fidelity technical projects focused on **Network Traffic Analysis**, **Threat Hunting**, and **Enterprise Systems Hardening**. Unlike standard documentation, this portfolio provides deep-dive forensic evidence and actionable security intelligence derived from real-world attack simulations.
+Welcome to my professional cybersecurity portfolio. This repository is an exhaustive collection of my technical journey, documenting every lab, exercise, and project I have completed. It showcases my expertise in **Network Forensics**, **Active Directory Security**, **Password Attacks**, and **Enterprise Systems Hardening**.
 
 ---
 
@@ -12,10 +12,10 @@ Welcome to my professional cybersecurity portfolio. This repository documents a 
 
 In a landscape of automated tools, I focus on the **"Why"** and **"How"** of an attack. My approach is characterized by:
 
-*   **Packet-Level Precision**: I don't just see alerts; I dissect the raw TCP/IP, 802.11, and DNS protocols to uncover stealthy indicators of compromise (IoCs).
-*   **SOC-Ready Methodology**: Every analysis follows a structured forensic process—from initial scoping and pattern recognition to final threat classification and mitigation strategy.
-*   **Hybrid Expertise**: I bridge the gap between **Offensive Reconnaissance** (understanding attacker TTPs) and **Defensive Hardening** (implementing least-privilege NTFS/Share permissions and service auditing).
-*   **Visual Evidence**: Every claim is backed by forensic screenshots and PCAP analysis, ensuring transparency and technical validation.
+*   **Packet-Level Precision**: I dissect raw TCP/IP, 802.11, and DNS protocols to uncover stealthy indicators of compromise (IoCs).
+*   **Full Attack-and-Detect Cycles**: I simulate both offensive phases (exploitation) and defensive phases (forensic analysis and detection), providing a 360-degree view of security.
+*   **Enterprise-Grade Hardening**: I implement robust security controls, from Active Directory ACLs to least-privilege NTFS permissions.
+*   **Forensic Transparency**: Every project is backed by raw evidence, including PCAP analysis, event log correlation, and technical screenshots.
 
 ---
 
@@ -24,47 +24,52 @@ In a landscape of automated tools, I focus on the **"Why"** and **"How"** of an 
 | Category | Skills & Tools |
 | :--- | :--- |
 | **Network Forensics** | Wireshark, PCAP Analysis, Protocol Dissection (TCP, ICMP, DNS, TLS, 802.11) |
-| **Threat Detection** | ARP Spoofing, MITM, DNS Tunneling, TLS Renegotiation DoS, HTTP Directory Enumeration |
-| **Systems Security** | Windows Security Hardening, NTFS & Share Permissions, PowerShell Auditing, User/Group Management |
-| **Reconnaissance** | Nmap Traffic Analysis, ARP Scanning Detection, Wireless Deauthentication Analysis |
+| **Active Directory Security** | Kerberoasting, DCSync, Golden Ticket, GPP Password Attacks, ACL Exploitation, BloodHound, Rubeus, Mimikatz |
+| **Threat Detection** | Event Log Analysis (IDs 4769, 4663, 4624, 4738), Honeypot Strategies, NTLM Relay Detection |
+| **Password Attacks** | Brute-forcing (Hydra, NetExec), Offline Cracking (Hashcat), Credential Discovery in Shares/AD Attributes |
+| **Systems Security** | Windows Hardening, NTFS & Share Permissions, PowerShell Auditing, User/Group Management |
 
 ---
 
-## 🔬 Featured Projects & Visual Evidence
+## 🔬 Exhaustive Project & Lab List
 
-### 1. Network Intrusion & Protocol Abuse Detection
-I specialize in identifying advanced threats that bypass traditional firewalls by abusing trusted protocols.
+Below is a complete list of every project and lab documented in this repository, categorized by module.
 
-*   **[DNS Tunneling Data Exfiltration Analysis](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-dns-tunneling-data-exfiltration-analysis)**: Detected covert C2 channels by identifying anomalous `TXT` record queries and extracting embedded malicious payloads.
-    > *“Smoking Gun” Evidence: Extracted `HTB{This is kind of malicious ;)}` from raw DNS traffic.*
-    ![DNS Tunneling](Hack%20The%20Box/Exercises/Screenshot%202026-01-18%20091309.png)
+### 1. Network Traffic Analysis & Intrusion Detection
+*Detailed forensic investigations into network-layer attacks using Wireshark.*
 
-*   **[TLS Renegotiation DoS Attack Analysis](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-7-tls-renegotiation-dos-attack-analysis)**: Identified application-layer resource exhaustion attacks by analyzing `Client Hello` flood patterns and server `Encrypted Alert` responses.
-    ![TLS DoS](Hack%20The%20Box/Exercises/Screenshot%202026-01-17%20110148.png)
+*   **[Project 1: ARP Spoofing Detection](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-1-arp-spoofing-detection-using-wireshark)**: Detecting MITM attacks via duplicate IP-to-MAC mapping.
+*   **[Project 2: ARP Scan Detection](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-2-arp-scan-detection-using-wireshark)**: Identifying network reconnaissance through sequential IP enumeration.
+*   **[Project 3: Wi-Fi Deauthentication Attack](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-3-detecting-a-wi-fi-deauthentication-attack-layer-2)**: Analyzing 802.11 management frames to identify Layer 2 DoS.
+*   **[Project 4: TCP Port Scan Detection](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-4-detection-of-tcp-port-scan-via-packet-analysis)**: Confirming reconnaissance activity through TCP Reset (RST) flag analysis.
+*   **[Project 5: ICMP Smurf Attack Detection](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-5-icmp-smurf-attack-detection--pcap-analysis-wireshark)**: Identifying bandwidth-exhaustion DoS via ICMP payload analysis.
+*   **[Project 6: HTTP Directory Enumeration](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-6-http-directory-enumeration-attack-analysis)**: Detecting automated web reconnaissance (Gobuster/DirBuster) in HTTP traffic.
+*   **[Project 7: TLS Renegotiation DoS](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-7-tls-renegotiation-dos-attack-analysis)**: Identifying CPU-exhaustion attacks in encrypted traffic.
+*   **[Project 8: DNS Tunneling Exfiltration](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-dns-tunneling-data-exfiltration-analysis)**: Uncovering covert C2 channels and data exfiltration within DNS `TXT` records.
 
-*   **[ARP Spoofing Detection Using Wireshark](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-1-arp-spoofing-detection-using-wireshark)**: Validated Layer 2 attacks using duplicate IP-to-MAC mapping analysis and unsolicited ARP reply detection.
-    ![ARP Spoofing](Hack%20The%20Box/Exercises/Screenshot%202026-01-08%20080535.png)
+### 2. Active Directory Offensive & Defensive Simulations
+*Full-cycle simulations of advanced AD attacks and their corresponding detection methods.*
 
-*   **[ARP Scan Detection Using Wireshark](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-2-arp-scan-detection-using-wireshark)**: Identified network reconnaissance activity through sequential IP enumeration and analysis of ARP requests.
-    ![ARP Scan](Hack%20The%20Box/Exercises/Screenshot%202026-01-09%20113622.png)
+*   **[Exercise 1: Kerberoasting Simulation](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md#exercise-one-kerberoasting-simulation)**: Attacking service accounts with Rubeus and detecting via Event ID 4769.
+*   **[Exercise 2: GPP Password Attack](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md#exercise-two-gpp-password-attack-simulation)**: Extracting credentials from SYSVOL and detecting via Object Access auditing (Event ID 4663).
+*   **[Exercise 3: Exposed Credentials in Shares](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md#exercise-three-exposed-credentials-in-network-share)**: Discovering hardcoded passwords in scripts and detecting lateral movement (Event ID 4624).
+*   **[Exercise 4: AD Enumeration & Attributes](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md#exercise-four-ad-enumeration-and-credential-discovery)**: Finding passwords in AD user attributes and monitoring for suspicious TGT requests.
+*   **[Exercise 5: DCSync Attack Simulation](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md#exercise-five-dcsync-attack-simulation)**: Performing unauthorized domain replication with Mimikatz and detecting via Event ID 4662.
+*   **[Exercise 6: Golden Ticket Attack](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md#exercise-six-golden-ticket-attack-simulation)**: Forging persistence and detecting elevated token logons and abnormal Kerberos traffic.
+*   **[Exercise 7: Print Spooler (PrinterBug) Relay](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md#exercise-seven-print-spooler-attack--detection-summary)**: Relaying NTLM credentials for domain compromise and detecting via source IP mismatches.
+*   **[Exercise 8: ACL Attack & Honeypot Defense](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md#exercise-eight-acl-attack--defense)**: Exploiting `GenericAll` permissions and implementing a honeypot account for instant detection.
 
-*   **[Detecting a Wi-Fi Deauthentication Attack (Layer 2)](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-3-detecting-a-wi-fi-deauthentication-attack-layer-2)**: Analyzed wireless packet captures to identify Layer 2 Wi-Fi deauthentication attacks.
-    ![Wi-Fi Deauth](Hack%20The%20Box/Exercises/Screenshot%202026-01-10%20184241.png)
+### 3. Password Attacks & Network Services
+*Practical labs focused on credential harvesting and service exploitation.*
 
-*   **[Detection of TCP Port Scan via Packet Analysis](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-4-detection-of-tcp-port-scan-via-packet-analysis)**: Identified and confirmed malicious reconnaissance activity (TCP port scanning) using packet-level analysis.
-    ![TCP Port Scan](Hack%20The%20Box/Exercises/Screenshot%202026-01-12%20073417.png)
+*   **[Project 1: WinRM Brute-Force & Flag Recovery](Hack%20The%20Box/Password%20Attacks%20Module/Network%20Services%20Laps.md#project-one)**: Using `netexec` and `evil-winrm` to compromise Windows Remote Management.
+*   **[Project 2: SSH Brute-Force & Flag Recovery](Hack%20The%20Box/Password%20Attacks%20Module/Network%20Services%20Laps.md#project-two)**: Using `hydra` to crack SSH credentials and gain shell access.
 
-*   **[ICMP Smurf Attack Detection – PCAP Analysis (Wireshark)](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-5-icmp-smurf-attack-detection--pcap-analysis-wireshark)**: Identified abnormal ICMP behavior indicative of a denial-of-service attack.
-    ![ICMP Smurf](Hack%20The%20Box/Exercises/Screenshot%202026-01-12%20185914.png)
+### 4. Windows Systems Hardening
+*Foundational security configuration and auditing.*
 
-*   **[HTTP Directory Enumeration Attack Analysis](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md#project-6-http-directory-enumeration-attack-analysis)**: Investigated suspicious web traffic to identify HTTP directory and file enumeration attacks.
-    ![HTTP Enum](Hack%20The%20Box/Exercises/Screenshot%202026-01-15%20075251.png)
-
-### 2. Enterprise Systems Hardening (Windows)
-Beyond detection, I implement robust security controls to prevent unauthorized access and lateral movement.
-
-*   **[Windows Fundamentals Lab](Hack%20The%20Box/Windows%20Fundamentals%20Module/windows%20fundamentals%20Lap.md)**: Implemented a strict least-privilege model for sensitive HR data, configuring complex NTFS and Share permission inheritance.
-    ![Windows Hardening](Hack%20The%20Box/Windows%20Fundamentals%20Module/Images/Screenshot%202025-11-14%20045253.png)
+*   **[Secure File Share Configuration](Hack%20The%20Box/Windows%20Fundamentals%20Module/windows%20fundamentals%20Lap.md)**: Implementing least-privilege NTFS and Share permissions for enterprise data.
+*   **[Service Auditing via PowerShell](Hack%20The%20Box/Windows%20Fundamentals%20Module/windows%20fundamentals%20Lap.md#7-audit-service)**: Using CLI tools to validate system service security states.
 
 ---
 
@@ -73,16 +78,15 @@ Beyond detection, I implement robust security controls to prevent unauthorized a
 ```bash
 Amr999/
 ├── Hack The Box/
-│   ├── Exercises/                      # Deep-dive PCAP Analysis & Threat Hunting
+│   ├── Exercises/                      # Network Forensics & AD Simulations
 │   │   ├── [Network traffic Analysis.md](Hack%20The%20Box/Exercises/Network%20traffic%20Analysis.md)
-│   │   ├── [Offensive defensive exercises.md](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md)
-│   │   └── ... (Forensic Screenshots)
-│   ├── Password Attacks Module/        # Credential Security & Lab Writeups
+│   │   └── [Offensive defensive exercises.md](Hack%20The%20Box/Exercises/Offensive%20defensive%20exercises.md)
+│   ├── Password Attacks Module/        # Credential Harvesting Labs
 │   │   └── [Network Services Laps.md](Hack%20The%20Box/Password%20Attacks%20Module/Network%20Services%20Laps.md)
-│   └── Windows Fundamentals Module/    # Systems Hardening & Security Auditing
+│   └── Windows Fundamentals Module/    # Systems Hardening & Auditing
 │       ├── [Module Summary.md](Hack%20The%20Box/Windows%20Fundamentals%20Module/Module%20Summary.md)
 │       └── [windows fundamentals Lap.md](Hack%20The%20Box/Windows%20Fundamentals%20Module/windows%20fundamentals%20Lap.md)
-└── README.md                           # Professional Portfolio Overview
+└── README.md                           # Exhaustive Portfolio Overview
 ```
 
 ---
